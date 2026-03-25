@@ -193,7 +193,8 @@ class LauncherWindow:
         HashCrackerWindow(self.root)
 
     def _open_hybrid(self):
-        _coming_soon(self.root, "Hybrid Attack Engine")
+        from ui.hybrid_attack_window import HybridAttackWindow
+        HybridAttackWindow(self.root)
 
     def _open_wordlist(self):
         _coming_soon(self.root, "Wordlist Generator")
