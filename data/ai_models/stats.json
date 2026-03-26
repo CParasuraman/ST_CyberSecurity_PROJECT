@@ -1,0 +1,8 @@
+{
+  "total_trained": 150,
+  "training_files": [
+    "small.txt",
+    "training.txt"
+  ],
+  "self_learned": 0
+}
