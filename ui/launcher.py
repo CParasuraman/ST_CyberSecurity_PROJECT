@@ -273,7 +273,8 @@ class LauncherWindow:
         _coming_soon(self.root, "Reports & Logs")
 
     def _open_rules(self):
-        _coming_soon(self.root, "Rule Engine")
+        from ui.rule_engine_window import RuleEngineWindow
+        RuleEngineWindow(self.root)
 
 
 def _coming_soon(parent, name):
