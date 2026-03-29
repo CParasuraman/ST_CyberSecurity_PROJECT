@@ -482,14 +482,19 @@ class HashCrackerWindow:
 
     def _done(self):
         self.running = False
-        self.start_btn.configure(state="normal",
-                                  text="▶  Start Cracking")
+        self.start_btn.configure(
+            state="normal",
+            text="▶  Start Cracking")
         total   = len(self.results)
-        cracked = sum(1 for r in self.results if r["status"] == "Cracked")
+        cracked = sum(
+            1 for r in self.results
+            if r["status"] == "Cracked")
         self.progress["value"] = 100
-        self.progress_label.configure(text="100%  ·  Complete")
+        self.progress_label.configure(
+            text="100%  ·  Complete")
         self._set_status(
-            f"Done  ·  {cracked}/{total} cracked  ·  "
+            f"Done  ·  {cracked}/{total} "
+            f"cracked  ·  "
             f"{self.stat_vars['Elapsed'].get()}")
 
     # ── Export CSV ───────────────────────────────────────────
