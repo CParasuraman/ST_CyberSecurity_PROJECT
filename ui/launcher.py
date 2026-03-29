@@ -274,7 +274,8 @@ class LauncherWindow:
         AnalyticsDashboard(self.root)
 
     def _open_reports(self):
-        _coming_soon(self.root, "Reports & Logs")
+        from ui.reports_window import ReportsWindow
+        ReportsWindow(self.root)
 
     def _open_rules(self):
         from ui.rule_engine_window import RuleEngineWindow

@@ -856,6 +856,20 @@ class HybridAttackWindow:
             f"=== Done: {cracked}/{total} cracked ===",
             "found")
         self.stat_vars["Current"].set("Done")
+        
+        from core.session_logger import log_session
+        cracked = sum(
+            1 for r in self.results
+            if r["status"] == "Cracked")
+        log_session("Hybrid", {
+            "cracked":  cracked,
+            "total":    len(self.results),
+            "elapsed":  self.stat_vars[
+                "Elapsed"].get(),
+            "summary":
+                f"{cracked}/{len(self.results)}"
+                f" cracked · 4 stages",
+        })
 
     # ── Export CSV ───────────────────────────────────────────
     def _export_csv(self):
