@@ -482,15 +482,38 @@ class HashCrackerWindow:
 
     def _done(self):
         self.running = False
-        self.start_btn.configure(state="normal",
-                                  text="▶  Start Cracking")
+        self.start_btn.configure(
+            state="normal",
+            text="▶  Start Cracking")
         total   = len(self.results)
-        cracked = sum(1 for r in self.results if r["status"] == "Cracked")
+        cracked = sum(
+            1 for r in self.results
+            if r["status"] == "Cracked")
         self.progress["value"] = 100
-        self.progress_label.configure(text="100%  ·  Complete")
+        self.progress_label.configure(
+            text="100%  ·  Complete")
         self._set_status(
-            f"Done  ·  {cracked}/{total} cracked  ·  "
+            f"Done  ·  {cracked}/{total} "
+            f"cracked  ·  "
             f"{self.stat_vars['Elapsed'].get()}")
+        
+        # Auto-log the session
+        from core.session_logger import log_session
+        cracked = sum(
+            1 for r in self.results
+            if r["status"] == "Cracked")
+        log_session("Hash Crack", {
+            "cracked":  cracked,
+            "total":    len(self.results),
+            "elapsed":  self.stat_vars[
+                "Elapsed"].get(),
+            "summary":
+                f"{cracked}/{len(self.results)}"
+                f" cracked · "
+                f"{self.stat_vars['Elapsed'].get()}",
+            "algorithms": list(set(
+                r["algo"] for r in self.results)),
+        })
 
     # ── Export CSV ───────────────────────────────────────────
     def _export_csv(self):

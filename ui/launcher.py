@@ -264,16 +264,22 @@ class LauncherWindow:
         AITrainingWindow(self.root)
 
     def _open_rainbow(self):
-        _coming_soon(self.root, "Rainbow Table Manager")
+        from ui.rainbow_table_window import (
+            RainbowTableWindow)
+        RainbowTableWindow(self.root)
 
     def _open_analytics(self):
-        _coming_soon(self.root, "Analytics Dashboard")
+        from ui.analytics_window import (
+            AnalyticsDashboard)
+        AnalyticsDashboard(self.root)
 
     def _open_reports(self):
-        _coming_soon(self.root, "Reports & Logs")
+        from ui.reports_window import ReportsWindow
+        ReportsWindow(self.root)
 
     def _open_rules(self):
-        _coming_soon(self.root, "Rule Engine")
+        from ui.rule_engine_window import RuleEngineWindow
+        RuleEngineWindow(self.root)
 
 
 def _coming_soon(parent, name):
